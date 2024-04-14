@@ -1,45 +1,63 @@
 import React from 'react';
-import styled from 'styled-components';
-
-// Import individual card components
-import SpatialAnalysis from './api/SpatialAnalysis';
-import BeatwiseAnalysis from './api/BeatwiseAnalysis';
-import TrendAnalysis from './api/TrendAnalysis';
-import CrimeAnalysis from './api/CrimeAnalysis';
-import VulnerabilityAnalysis from './api/VulnerabilityAnalysis';
-import BeatDutiesAnalysis from './api/BeatDutiesAnalysis';
-import CrimePredictionModel from './api/CrimePredictionModel';
+import { Link } from 'react-router-dom';
+import ToolsCard from './components/ToolsCard'; // Correct import path
 
 const Services = () => {
+    const toolsList = [
+        {
+            name: "1. Spatial Analysis",
+            description: "---",
+            link: "/spatial-analysis",
+            image: "/images/spatial_analysis.png",
+        },
+        {
+            name: "2. Beat wise distribution of crimes",
+            description: "---",
+            link: "/beat-wise",
+            image: "/images/Beat-Wise.png",
+        },
+        {
+            name: "3. Trend of occurrence of crimes",
+            description: "---",
+            link: "/Trend-of-occurance",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGPXdTXOvBRD8ur3M-DPv2tsjhdI7aqtya6PuEMwfGg&s",
+        },
+        {
+            name: "4. Prediction of criminal behavior",
+            description: "---",
+            link: "/criminalbehavior",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGPXdTXOvBRD8ur3M-DPv2tsjhdI7aqtya6PuEMwfGg&s",
+        },
+        {
+            name: "5. Prediction of vulnerable populations",
+            description: "---",
+            link: "/vulnerablepopulation",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGPXdTXOvBRD8ur3M-DPv2tsjhdI7aqtya6PuEMwfGg&s",
+        },
+        {
+            name: "6. Beat wise Distribution of crimes",
+            description: "---",
+            link: "/beat-wise",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGPXdTXOvBRD8ur3M-DPv2tsjhdI7aqtya6PuEMwfGg&s",
+        },
+        {
+            name: "7. AI Model",
+            description: "---",
+            link: "/AI-model",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGPXdTXOvBRD8ur3M-DPv2tsjhdI7aqtya6PuEMwfGg&s",
+        },
+    ];
+
     return (
-        <Wrapper className="section">
-            <h2 className="common-heading">Our Services</h2>
-            <div className="container grid grid-three-column">
-                <SpatialAnalysis />
-                <BeatwiseAnalysis />
-                <TrendAnalysis />
-                <CrimeAnalysis />
-                <VulnerabilityAnalysis />
-                <BeatDutiesAnalysis />
-                <CrimePredictionModel />
+        <div className="services-section">
+            <h2>Services</h2>
+            <div className="tools-container">
+                {toolsList.map((tool, index) => (
+                    <ToolsCard key={index} tool={tool} />
+                ))}
             </div>
-        </Wrapper>
+        </div>
     );
 };
-
-const Wrapper = styled.section`
-    padding: 9rem 0;
-    background-color: ${({ theme }) => theme.colors.bg};
-
-    .container {
-        max-width: 120rem;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-    }
-`;
 
 export default Services;
